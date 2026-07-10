@@ -23,6 +23,7 @@ body {
 }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 img { max-width: 100%; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 .site-header {
   height: 70px;
@@ -90,15 +91,21 @@ img { max-width: 100%; }
 .section-heading h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 48px; line-height: 1; font-weight: 500; }
 .section-heading > p { max-width: 330px; margin: 0; color: var(--muted); text-align: right; }
 .eyebrow { color: var(--signal); }
-.section-tabs { display: flex; gap: 8px; overflow-x: auto; padding: 0 0 18px; border-bottom: 1px solid var(--ink); }
-.section-tabs a { flex: none; padding: 7px 12px; border: 1px solid var(--line); border-radius: 4px; font-size: 13px; font-weight: 700; text-decoration: none; }
-.section-tabs a:hover { border-color: var(--ink); }
+.archive-tools { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 0 18px; border-bottom: 1px solid var(--ink); }
+.section-tabs { display: flex; gap: 8px; overflow-x: auto; }
+.section-tabs button { flex: none; padding: 8px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); color: var(--ink); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.section-tabs button:hover, .section-tabs button.is-active { border-color: var(--ink); background: var(--ink); color: #fff; }
+.archive-search { min-width: 230px; display: flex; align-items: center; gap: 7px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; }
+.archive-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.archive-status { min-height: 22px; margin: 14px 0 0; color: var(--muted); font-size: 13px; }
 .archive-group { scroll-margin-top: 24px; }
+.archive-group[hidden], .entry-card[hidden] { display: none; }
 .archive-group-title { margin: 46px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--ink); font-size: 14px; text-transform: uppercase; }
 .entry-card { min-height: 190px; display: grid; grid-template-columns: 72px minmax(0, 1fr) 44px; gap: 28px; align-items: start; padding: 32px 0; border-bottom: 1px solid var(--line); }
 .card-date { color: var(--muted); text-transform: uppercase; line-height: 1; }
 .card-date span { display: block; font-size: 11px; font-weight: 800; }
 .card-date strong { display: block; margin-top: 7px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 38px; font-weight: 400; }
+.card-date small { display: block; margin-top: 5px; font-size: 10px; font-weight: 700; }
 .card-kicker { color: var(--teal); }
 .entry-card:nth-child(3n + 2) .card-kicker { color: var(--cobalt); }
 .entry-card:nth-child(3n) .card-kicker { color: var(--signal); }
@@ -125,6 +132,11 @@ img { max-width: 100%; }
 .player-wrap p { margin: 0 0 10px; font-size: 13px; font-weight: 800; text-transform: uppercase; }
 .text-edition-note { display: flex; flex-direction: column; gap: 2px; margin-top: 36px; padding: 20px 22px; border-left: 5px solid var(--sun); background: var(--soft); }
 .text-edition-note span { color: var(--muted); font-size: 14px; }
+.signal-box { margin-top: 20px; padding: 22px 24px; border: 1px solid var(--line); background: #fff; }
+.signal-box > p { margin: 0 0 12px; color: var(--teal); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.signal-box ul { margin: 0; padding-left: 20px; }
+.signal-box li { margin-bottom: 7px; }
+.signal-box li:last-child { margin-bottom: 0; }
 .entry-grid { display: grid; grid-template-columns: minmax(0, 760px) 220px; gap: 80px; justify-content: center; border-top: 1px solid var(--ink); padding-top: 56px; }
 .entry-aside { position: sticky; top: 28px; align-self: start; padding-top: 4px; color: var(--muted); font-size: 14px; }
 .entry-aside p { margin: 0 0 8px; }
@@ -139,9 +151,15 @@ img { max-width: 100%; }
 .prose p { margin: 0 0 1.25em; }
 .prose li { margin-bottom: .45em; padding-left: .25em; }
 .prose strong { font-weight: 700; }
+.prose a { color: #2353aa; text-decoration-color: #9db1dc; }
+.prose a:hover { color: var(--signal); text-decoration-color: var(--signal); }
 .prose code { padding: 2px 5px; border-radius: 3px; background: var(--soft); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em; }
 .prose table { width: 100%; border-collapse: collapse; font-family: Inter, ui-sans-serif, sans-serif; font-size: 14px; }
 .prose th, .prose td { padding: 9px; border: 1px solid var(--line); text-align: left; }
+.evidence-drawer { margin: 42px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.evidence-drawer summary { padding: 18px 4px; cursor: pointer; font-family: Inter, ui-sans-serif, sans-serif; font-size: 15px; font-weight: 750; }
+.evidence-drawer[open] { padding-bottom: 12px; }
+.evidence-drawer[open] summary { margin-bottom: 18px; border-bottom: 1px solid var(--line); }
 .simple-page { max-width: 780px; min-height: calc(100vh - 200px); margin: 0 auto; padding: 90px 24px 120px; }
 .simple-page h1 { display: block; margin: 0 0 36px; font-size: clamp(48px, 7vw, 82px); line-height: 1; font-weight: 500; }
 
@@ -162,6 +180,9 @@ img { max-width: 100%; }
   .section-heading { display: block; padding-bottom: 26px; }
   .section-heading h2 { font-size: 40px; }
   .section-heading > p { margin-top: 14px; text-align: left; }
+  .archive-tools { display: block; }
+  .section-tabs { padding-bottom: 14px; }
+  .archive-search { min-width: 0; width: 100%; }
   .entry-card { grid-template-columns: 52px minmax(0, 1fr); gap: 16px; min-height: 0; padding: 26px 0; }
   .card-copy h3 { font-size: 25px; }
   .card-copy > p { font-size: 15px; }
@@ -172,6 +193,7 @@ img { max-width: 100%; }
   .back-link { margin-bottom: 42px; }
   .entry-header h1 { font-size: 46px; overflow-wrap: anywhere; }
   .entry-deck { font-size: 18px; }
+  .signal-box { padding: 18px; }
   .entry-grid { display: block; padding-top: 38px; }
   .entry-aside { position: static; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); }
   .prose { font-size: 18px; }

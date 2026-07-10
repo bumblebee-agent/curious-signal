@@ -25,6 +25,14 @@ layout: default
         <span>The complete recording did not clear the publishing check.</span>
       </div>
     {% endif %}
+    {% if page.signal %}
+      <section class="signal-box" aria-labelledby="signal-heading">
+        <p id="signal-heading">In brief</p>
+        <ul>
+          {% for point in page.signal %}<li>{{ point }}</li>{% endfor %}
+        </ul>
+      </section>
+    {% endif %}
   </header>
   <div class="entry-grid">
     <div class="entry-content prose">
@@ -40,4 +48,3 @@ layout: default
     </aside>
   </div>
 </article>
-

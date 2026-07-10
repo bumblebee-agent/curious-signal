@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-07-10 · Editorial cleanup
+
+- Added Daily News as its own section with a complete six-minute audio edition.
+- Added three-point “In brief” summaries to every entry.
+- Standardized article structure and reduced duplicated deep-research sections.
+- Replaced internal source labels with readable inline citations.
+- Added expandable evidence notes, section filters, archive search, full dates,
+  and an RSS feed with audio enclosures.
+
 ## 2026-07-10
 
 - Created the first public Curious Signal edition for GitHub Pages.
@@ -8,4 +17,3 @@
   out of the archive and marked that page as a text edition.
 - Added a shared entry template so future publishing can be reduced to one
   Markdown file plus an optional MP3.
-
