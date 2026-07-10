@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article class="entry-shell">
+  <header class="entry-header">
+    <a class="back-link" href="{{ '/' | relative_url }}#editions">← All editions</a>
+    <p class="edition-kicker">{{ page.section }} · {{ page.date | date: "%B %-d, %Y" }}</p>
+    <h1>{{ page.title }}</h1>
+    <p class="entry-deck">{{ page.description }}</p>
+    <div class="entry-meta">
+      {% if page.audio %}<span>{{ page.duration }}</span>{% else %}<span>Text edition</span>{% endif %}
+      <span>{{ page.read_time }} read</span>
+    </div>
+    {% if page.audio %}
+      <div class="player-wrap">
+        <p>Listen to this edition</p>
+        <audio controls preload="metadata">
+          <source src="{{ page.audio | relative_url }}" type="audio/mpeg">
+          Your browser does not support embedded audio.
+        </audio>
+      </div>
+    {% else %}
+      <div class="text-edition-note">
+        <strong>Text edition</strong>
+        <span>The complete recording did not clear the publishing check.</span>
+      </div>
+    {% endif %}
+  </header>
+  <div class="entry-grid">
+    <div class="entry-content prose">
+      {{ content }}
+    </div>
+    <aside class="entry-aside" aria-label="Edition details">
+      <p class="aside-label">Edition</p>
+      <p>{{ page.section }}</p>
+      <p>{{ page.date | date: "%B %-d, %Y" }}</p>
+      {% if page.primary_source %}
+        <a class="source-button" href="{{ page.primary_source }}" rel="noopener noreferrer">Primary source ↗</a>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+

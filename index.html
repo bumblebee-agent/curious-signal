@@ -1,0 +1,74 @@
+---
+layout: default
+title:
+description: Morning audio, useful research, and the sources behind both.
+---
+{% assign sorted_entries = site.entries | sort: 'date' | reverse %}
+{% assign featured = site.entries | where: 'featured', true | first %}
+<section class="hero" style="background-image: url('{{ '/assets/images/curious-signal-masthead.jpg' | relative_url }}')">
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <p class="hero-kicker">An audio notebook for curious mornings</p>
+    <h1>Curious Signal</h1>
+    <p class="hero-deck">Morning talk, focused research, and a clean trail back to the source.</p>
+    {% if featured %}
+      <div class="hero-latest">
+        <p>Latest listen · {{ featured.duration }}</p>
+        <a href="{{ featured.url | relative_url }}">{{ featured.title }} <span aria-hidden="true">→</span></a>
+        <audio controls preload="metadata">
+          <source src="{{ featured.audio | relative_url }}" type="audio/mpeg">
+        </audio>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="archive" id="editions">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">The archive</p>
+      <h2>Recent editions</h2>
+    </div>
+    <p>Brief enough to hear. Deep enough to follow.</p>
+  </div>
+  <div class="section-tabs" aria-label="Edition types">
+    <a href="#editions">Latest</a>
+    <a href="#morning-brief">Morning brief</a>
+    <a href="#research-summary">Research summary</a>
+    <a href="#deep-research">Deep research</a>
+  </div>
+  {% assign section_defs = "morning-brief|Morning Brief,research-summary|Research Summary,deep-research|Deep Research" | split: "," %}
+  {% for section_def in section_defs %}
+    {% assign section_parts = section_def | split: "|" %}
+    {% assign section_slug = section_parts[0] %}
+    {% assign section_label = section_parts[1] %}
+    <div class="archive-group" id="{{ section_slug }}">
+      <h3 class="archive-group-title">{{ section_label }}</h3>
+      {% for entry in sorted_entries %}
+        {% if entry.section_slug == section_slug %}
+      <article class="entry-card">
+        <div class="card-date">
+          <span>{{ entry.date | date: "%b" }}</span>
+          <strong>{{ entry.date | date: "%-d" }}</strong>
+        </div>
+        <div class="card-copy">
+          <p class="card-kicker">{{ entry.section }}</p>
+          <h3><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></h3>
+          <p>{{ entry.description }}</p>
+          <div class="card-meta">
+            {% if entry.audio %}<span>▶ {{ entry.duration }}</span>{% else %}<span>Text edition</span>{% endif %}
+            <span>{{ entry.read_time }} read</span>
+          </div>
+        </div>
+        <a class="card-arrow" href="{{ entry.url | relative_url }}" aria-label="Open {{ entry.title }}">→</a>
+      </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</section>
+
+<section class="manifesto-band">
+  <p class="eyebrow">The idea</p>
+  <blockquote>Keep the useful signal. Keep the source nearby. Let the rest be quiet.</blockquote>
+</section>

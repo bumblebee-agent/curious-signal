@@ -1,0 +1,21 @@
+title: Curious Signal
+description: Morning audio, useful research, and the sources behind both.
+url: https://bumblebee-agent.github.io
+baseurl: /curious-signal
+timezone: Asia/Bangkok
+markdown: kramdown
+permalink: pretty
+collections:
+  entries:
+    output: true
+    permalink: /listen/:name/
+defaults:
+  - scope:
+      path: ""
+      type: entries
+    values:
+      layout: entry
+exclude:
+  - README.md
+  - CHANGELOG.md
+
