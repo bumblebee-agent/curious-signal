@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import unittest
 
@@ -36,6 +37,33 @@ class HomepageLatestListenTests(unittest.TestCase):
         _, newest = max(morning_briefs, key=lambda item: item[0])
         self.assertTrue(newest.get("audio", "").endswith(".mp3"))
         self.assertTrue(newest.get("duration"))
+
+    def test_archive_cards_render_bounded_excerpts(self) -> None:
+        homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+        stylesheet = (ROOT / "assets/css/style.css").read_text(encoding="utf-8")
+
+        self.assertIn(
+            "{{ entry.description | strip_newlines | truncatewords: 36 }}",
+            homepage,
+        )
+        self.assertIn("-webkit-line-clamp: 3", stylesheet)
+
+    def test_july_16_morning_brief_description_is_a_real_snippet(self) -> None:
+        entry = (
+            ROOT / "_entries" / "2026-07-16-morning-brief-2026-07-16.md"
+        ).read_text(encoding="utf-8")
+        description_line = next(
+            line for line in entry.splitlines() if line.startswith("description: ")
+        )
+        description = json.loads(description_line.removeprefix("description: "))
+
+        expected_excerpt = (
+            "xAI released Grok Build under Apache 2.0, but Hacker News users express "
+            "severe skepticism due to alleged data exfiltration and lack of commit history."
+        )
+        self.assertEqual(description, expected_excerpt)
+        self.assertLessEqual(len(description), 240)
+        self.assertIn(f'  - "{expected_excerpt}"', entry)
 
 
 if __name__ == "__main__":

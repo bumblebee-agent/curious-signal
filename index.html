@@ -64,7 +64,7 @@ description: Morning audio, useful research, and the sources behind both.
         <div class="card-copy">
           <p class="card-kicker">{{ entry.section }}</p>
           <h3><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></h3>
-          <p>{{ entry.description }}</p>
+          <p>{{ entry.description | strip_newlines | truncatewords: 36 }}</p>
           <div class="card-meta">
             {% if entry.audio %}<span>▶ {{ entry.duration }}</span>{% else %}<span>Text edition</span>{% endif %}
             <span>{{ entry.read_time }} read</span>
