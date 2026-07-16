@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-07-16 · Compact archive excerpts
+
+- Replaced the July 16 Morning Brief's accidental full-script description and
+  first signal with the existing compact News bullet while retaining the full
+  News text on the edition page.
+- Bounded visible archive excerpts to 36 words with a three-line visual safety
+  net for legacy entries.
+
 ## 2026-07-16 · Compact edition titles
 
 - Reduced the responsive edition-page title scale so long generated headlines

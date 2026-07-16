@@ -112,7 +112,7 @@ img { max-width: 100%; }
 .card-copy h3 { max-width: 820px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 31px; line-height: 1.16; font-weight: 500; }
 .card-copy h3 a { text-decoration: none; }
 .card-copy h3 a:hover { color: var(--signal); }
-.card-copy > p { max-width: 760px; margin: 12px 0; color: var(--muted); }
+.card-copy > p { max-width: 760px; margin: 12px 0; overflow: hidden; color: var(--muted); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .card-meta { display: flex; gap: 18px; font-size: 12px; font-weight: 760; text-transform: uppercase; }
 .card-arrow { align-self: center; justify-self: end; font-size: 30px; text-decoration: none; color: var(--signal); }
 
