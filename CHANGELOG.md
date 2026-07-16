@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-07-16
+
+- Repaired the July 16 Morning Brief provenance display without changing its
+  audio. The edition now shows the generated Bumblebee-original Morning Spark,
+  grouped News and Weather sources, truthful derived-from-News attribution for
+  Daily Focus, and an in-page `View sources` control instead of presenting the
+  first link as the composite edition's primary source.
+
 ## 2026-07-16 · Compact archive excerpts
 
 - Replaced the July 16 Morning Brief's accidental full-script description and
