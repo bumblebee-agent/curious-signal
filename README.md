@@ -9,6 +9,9 @@ pages using the shared layout in `_layouts/entry.html`.
 
 The home archive supports section filters and text search. `feed.xml` publishes
 the same collection as an RSS feed, including MP3 enclosures when audio exists.
+The homepage “Latest listen” player automatically uses the newest published
+Morning Brief, so publishing the daily entry and MP3 advances the player without
+a separate featured-content step.
 
 ## Publish contract
 

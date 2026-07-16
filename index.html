@@ -4,7 +4,7 @@ title:
 description: Morning audio, useful research, and the sources behind both.
 ---
 {% assign sorted_entries = site.entries | sort: 'date' | reverse %}
-{% assign featured = site.entries | where: 'featured', true | first %}
+{% assign featured = sorted_entries | where: 'section_slug', 'morning-brief' | first %}
 <section class="hero" style="background-image: url('{{ '/assets/images/curious-signal-masthead.jpg' | relative_url }}')">
   <div class="hero-scrim"></div>
   <div class="hero-inner">
