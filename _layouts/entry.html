@@ -42,7 +42,9 @@ layout: default
       <p class="aside-label">Edition</p>
       <p>{{ page.section }}</p>
       <p>{{ page.date | date: "%B %-d, %Y" }}</p>
-      {% if page.primary_source %}
+      {% if page.section_slug == "morning-brief" %}
+        <a class="source-button" href="#sources">View sources ↓</a>
+      {% elsif page.primary_source %}
         <a class="source-button" href="{{ page.primary_source }}" rel="noopener noreferrer">Primary source ↗</a>
       {% endif %}
     </aside>

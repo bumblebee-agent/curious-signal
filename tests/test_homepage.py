@@ -65,6 +65,24 @@ class HomepageLatestListenTests(unittest.TestCase):
         self.assertLessEqual(len(description), 240)
         self.assertIn(f'  - "{expected_excerpt}"', entry)
 
+    def test_july_16_morning_brief_has_truthful_grouped_provenance(self) -> None:
+        entry = (
+            ROOT / "_entries" / "2026-07-16-morning-brief-2026-07-16.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("*Bumblebee original.*", entry)
+        for heading in ("### News", "### Weather"):
+            self.assertIn(heading, entry)
+        self.assertNotIn("### Daily Focus", entry)
+        self.assertIn("*Derived from today's News.*", entry)
+        self.assertIn("https://github.com/xai-org/grok-build", entry)
+        self.assertIn("https://developer.puter.com/labs/firefox-wasm/", entry)
+        self.assertIn("https://api.open-meteo.com/v1/forecast", entry)
+        self.assertIn("https://air-quality-api.open-meteo.com/v1/air-quality", entry)
+        self.assertNotIn("([News]", entry)
+        self.assertNotIn("([Daily Focus]", entry)
+        self.assertNotIn("([Weather]", entry)
+
 
 if __name__ == "__main__":
     unittest.main()
