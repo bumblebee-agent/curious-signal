@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-16 · Latest Morning Brief player
+
+- Changed the homepage “Latest listen” player to select the newest published
+  Morning Brief automatically instead of relying on a manually pinned legacy
+  `featured` flag.
+- Added a regression test for the homepage selection rule.
+
 ## 2026-07-10 · Editorial cleanup
 
 - Added Daily News as its own section with a complete six-minute audio edition.
