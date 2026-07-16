@@ -20,6 +20,19 @@ class EntryLayoutTests(unittest.TestCase):
         self.assertIn("{% elsif page.primary_source %}", layout)
         self.assertIn("Primary source ↗", layout)
 
+    def test_shared_shell_opens_only_external_web_links_in_new_tabs(self) -> None:
+        layout = (ROOT / "_layouts" / "default.html").read_text(encoding="utf-8")
+        script = (ROOT / "assets" / "js" / "external-links.js").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("/assets/js/external-links.js", layout)
+        self.assertIn("destination.origin === window.location.origin", script)
+        self.assertIn("destination.protocol !== \"http:\"", script)
+        self.assertIn("destination.protocol !== \"https:\"", script)
+        self.assertIn('link.target = "_blank"', script)
+        self.assertIn('link.relList.add("noopener", "noreferrer")', script)
+
 
 if __name__ == "__main__":
     unittest.main()
