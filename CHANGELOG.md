@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-16 · External link navigation
+
+- Added one shared site-shell rule that opens external HTTP and HTTPS links in
+  a new tab with `noopener noreferrer`, while same-origin, anchor, RSS, email,
+  and other non-web links keep their existing navigation behavior.
+
 ## 2026-07-16
 
 - Repaired the July 16 Morning Brief provenance display without changing its
