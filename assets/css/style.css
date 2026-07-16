@@ -125,7 +125,7 @@ img { max-width: 100%; }
 .back-link { display: inline-block; margin-bottom: 60px; color: var(--muted); font-size: 14px; text-decoration: none; }
 .back-link:hover { color: var(--signal); }
 .edition-kicker { color: var(--signal); }
-.entry-header h1 { margin: 14px 0 20px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(46px, 7vw, 82px); line-height: 1.01; font-weight: 500; letter-spacing: 0; }
+.entry-header h1 { margin: 14px 0 20px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(40px, 5vw, 58px); line-height: 1.05; font-weight: 500; letter-spacing: 0; }
 .entry-deck { max-width: 760px; color: var(--muted); font-size: 21px; line-height: 1.5; }
 .entry-meta { display: flex; gap: 20px; margin: 24px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; }
 .player-wrap { margin-top: 36px; padding: 22px; border-left: 5px solid var(--signal); background: var(--soft); }
@@ -191,7 +191,7 @@ img { max-width: 100%; }
   .entry-shell { padding: 38px 18px 80px; }
   .entry-header { padding-bottom: 42px; }
   .back-link { margin-bottom: 42px; }
-  .entry-header h1 { font-size: 46px; overflow-wrap: anywhere; }
+  .entry-header h1 { font-size: clamp(34px, 9vw, 40px); line-height: 1.08; overflow-wrap: anywhere; }
   .entry-deck { font-size: 18px; }
   .signal-box { padding: 18px; }
   .entry-grid { display: block; padding-top: 38px; }

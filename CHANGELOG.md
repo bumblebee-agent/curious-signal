@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-16 · Compact edition titles
+
+- Reduced the responsive edition-page title scale so long generated headlines
+  no longer dominate most of the first viewport on desktop or mobile.
+- Added regression coverage for the desktop and mobile title bounds.
+
 ## 2026-07-16 · Latest Morning Brief player
 
 - Changed the homepage “Latest listen” player to select the newest published
