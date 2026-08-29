@@ -100,7 +100,7 @@ img { max-width: 100%; }
 .archive-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
 .archive-status { min-height: 22px; margin: 14px 0 0; color: var(--muted); font-size: 13px; }
 .archive-group { scroll-margin-top: 24px; }
-.archive-group[hidden], .entry-card[hidden] { display: none; }
+.archive-group[hidden], .recent-group[hidden], .entry-card[hidden] { display: none; }
 .archive-group-title { margin: 46px 0 0; padding-bottom: 14px; border-bottom: 1px solid var(--ink); font-size: 14px; text-transform: uppercase; }
 .archive-year-title { margin: 64px 0 0; font-family: Georgia, "Times New Roman", serif; font-size: 44px; font-weight: 500; line-height: 1; }
 .archive-year:first-of-type .archive-year-title { margin-top: 42px; }

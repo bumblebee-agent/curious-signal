@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-08-30 · Recent-edition filters
+
+- Restored accessible edition-type filters on the bounded homepage for News,
+  Morning Brief, Research Summary, and Deep Research while preserving the
+  five-day recurring window and 15-entry Research limits.
+- Kept the complete archive's combined filters and text search unchanged, with
+  focused interaction coverage for the homepage's filter-only variant.
+
 ## 2026-08-25 · Bounded archive and Research video
 
 - Limited the homepage to the latest five-day recurring window and the newest

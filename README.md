@@ -10,7 +10,8 @@ pages using the shared layout in `_layouts/entry.html`.
 
 The homepage shows Daily News and Morning Brief from the latest five-day window
 anchored to the newest recurring edition, plus the newest 15 entries in each
-Research section. The complete `/archive/` supports section filters and text
+Research section. It supports quick section filters across that bounded recent
+collection. The complete `/archive/` supports the same section filters plus text
 search. `feed.xml` publishes
 the same collection as an RSS feed, including MP3 enclosures when audio exists.
 The homepage “Latest listen” player automatically uses the newest published

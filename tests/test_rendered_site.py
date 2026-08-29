@@ -50,6 +50,24 @@ class RenderedSiteTests(unittest.TestCase):
         self.assertNotIn("Research Summary 16", titles)
         self.assertNotIn("Deep Research 15", titles)
 
+    def test_homepage_exposes_filters_for_its_bounded_collection(self) -> None:
+        self.assertEqual(
+            re.findall(
+                r'<button type="button"(?: class="[^"]+")? '
+                r'data-filter="([^"]+)" aria-pressed="(true|false)">([^<]+)</button>',
+                self.home,
+            ),
+            [
+                ("all", "true", "All"),
+                ("daily-news", "false", "News"),
+                ("morning-brief", "false", "Morning brief"),
+                ("research-summary", "false", "Research summary"),
+                ("deep-research", "false", "Deep research"),
+            ],
+        )
+        self.assertIn('aria-label="Filter recent editions by type"', self.home)
+        self.assertNotIn('id="archive-search"', self.home)
+
     def test_archive_is_complete_newest_first_and_links_to_rendered_entries(self) -> None:
         archive_cards = cards(self.archive)
         self.assertEqual(len(archive_cards), 38)

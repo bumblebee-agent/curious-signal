@@ -1,16 +1,16 @@
 (function () {
   const cards = Array.from(document.querySelectorAll(".entry-card"));
-  const groups = Array.from(document.querySelectorAll(".archive-group"));
+  const groups = Array.from(document.querySelectorAll(".archive-group, .recent-group"));
   const buttons = Array.from(document.querySelectorAll("[data-filter]"));
   const search = document.querySelector("#archive-search");
   const status = document.querySelector("#archive-status");
 
-  if (!cards.length || !buttons.length || !search || !status) return;
+  if (!cards.length || !buttons.length) return;
 
   let activeFilter = "all";
 
   function applyFilters() {
-    const query = search.value.trim().toLowerCase();
+    const query = search ? search.value.trim().toLowerCase() : "";
     let visibleCount = 0;
 
     cards.forEach((card) => {
@@ -25,9 +25,11 @@
       group.hidden = !group.querySelector(".entry-card:not([hidden])");
     });
 
-    status.textContent = visibleCount === cards.length && !query && activeFilter === "all"
-      ? `${visibleCount} editions`
-      : `${visibleCount} ${visibleCount === 1 ? "edition" : "editions"} found`;
+    if (status) {
+      status.textContent = visibleCount === cards.length && !query && activeFilter === "all"
+        ? `${visibleCount} editions`
+        : `${visibleCount} ${visibleCount === 1 ? "edition" : "editions"} found`;
+    }
   }
 
   buttons.forEach((button) => {
@@ -42,6 +44,6 @@
     });
   });
 
-  search.addEventListener("input", applyFilters);
+  if (search) search.addEventListener("input", applyFilters);
   applyFilters();
 }());

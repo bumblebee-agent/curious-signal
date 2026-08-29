@@ -7,6 +7,24 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class HomepageLatestListenTests(unittest.TestCase):
+    def test_reader_can_filter_the_bounded_recent_collection(self) -> None:
+        homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn('role="group" aria-label="Filter recent editions by type"', homepage)
+        self.assertIn(
+            'data-filter="all" aria-pressed="true">All</button>', homepage
+        )
+        for section_slug, label in (
+            ("daily-news", "News"),
+            ("morning-brief", "Morning brief"),
+            ("research-summary", "Research summary"),
+            ("deep-research", "Deep research"),
+        ):
+            self.assertIn(
+                f'data-filter="{section_slug}" aria-pressed="false">{label}</button>',
+                homepage,
+            )
+
     def test_homepage_shows_only_the_bounded_recent_collection(self) -> None:
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
 
