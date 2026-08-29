@@ -6,6 +6,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class EntryLayoutTests(unittest.TestCase):
+    def test_filter_script_uses_the_deployment_revision_to_bust_stale_caches(self) -> None:
+        layout = (ROOT / "_layouts" / "default.html").read_text(encoding="utf-8")
+
+        self.assertIn(
+            "archive.js' | relative_url }}?v={{ site.github.build_revision | default: 'dev' }}",
+            layout,
+        )
+
     def test_research_youtube_identity_renders_a_privacy_enhanced_player(self) -> None:
         layout = (ROOT / "_layouts" / "entry.html").read_text(encoding="utf-8")
         stylesheet = (ROOT / "assets" / "css" / "style.css").read_text(

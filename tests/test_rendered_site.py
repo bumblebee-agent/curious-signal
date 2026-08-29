@@ -67,6 +67,7 @@ class RenderedSiteTests(unittest.TestCase):
         )
         self.assertIn('aria-label="Filter recent editions by type"', self.home)
         self.assertNotIn('id="archive-search"', self.home)
+        self.assertRegex(self.home, r'/assets/js/archive\.js\?v=[^" ]+')
 
     def test_archive_is_complete_newest_first_and_links_to_rendered_entries(self) -> None:
         archive_cards = cards(self.archive)

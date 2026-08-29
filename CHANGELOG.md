@@ -7,6 +7,8 @@
   five-day recurring window and 15-entry Research limits.
 - Kept the complete archive's combined filters and text search unchanged, with
   focused interaction coverage for the homepage's filter-only variant.
+- Revisioned the shared filter script URL per deployment so returning readers
+  do not keep the pre-filter homepage behavior from a stale browser cache.
 
 ## 2026-08-25 · Bounded archive and Research video
 
