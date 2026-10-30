@@ -1,0 +1,87 @@
+---
+layout: default
+title:
+description: Morning audio, useful research, and the sources behind both.
+---
+{% assign sorted_entries = site.entries | sort: 'date' | reverse %}
+{% assign featured = sorted_entries | where: 'section_slug', 'morning-brief' | first %}
+{% assign latest_recurring_epoch = 0 %}
+{% for entry in sorted_entries %}
+  {% if entry.section_slug == 'daily-news' or entry.section_slug == 'morning-brief' %}
+    {% assign latest_recurring_day = entry.date | date: "%Y-%m-%d" %}
+    {% assign latest_recurring_epoch = latest_recurring_day | date: "%s" | plus: 0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% assign recurring_cutoff_epoch = latest_recurring_epoch | minus: 345600 %}
+<section class="hero" style="background-image: url('{{ '/assets/images/curious-signal-masthead.jpg' | relative_url }}')">
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <p class="hero-kicker">An audio notebook for curious mornings</p>
+    <h1>Curious Signal</h1>
+    <p class="hero-deck">Morning talk, focused research, and a clean trail back to the source.</p>
+    {% if featured %}
+      <div class="hero-latest">
+        <p>Latest listen · {{ featured.duration }}</p>
+        <a href="{{ featured.url | relative_url }}">{{ featured.title }} <span aria-hidden="true">→</span></a>
+        <audio controls preload="metadata">
+          <source src="{{ featured.audio | relative_url }}" type="audio/mpeg">
+        </audio>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="archive recent-editions" id="editions">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Latest from the archive</p>
+      <h2>Recent editions</h2>
+    </div>
+    <p>Brief enough to hear. Deep enough to follow.</p>
+  </div>
+  <div class="section-tabs recent-filters" role="group" aria-label="Filter recent editions by type">
+    <button type="button" class="is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="daily-news" aria-pressed="false">News</button>
+    <button type="button" data-filter="morning-brief" aria-pressed="false">Morning brief</button>
+    <button type="button" data-filter="research-summary" aria-pressed="false">Research summary</button>
+    <button type="button" data-filter="deep-research" aria-pressed="false">Deep research</button>
+  </div>
+  {% assign recurring_section_defs = "daily-news|Daily News,morning-brief|Morning Brief" | split: "," %}
+  {% for section_def in recurring_section_defs %}
+    {% assign section_parts = section_def | split: "|" %}
+    {% assign section_slug = section_parts[0] %}
+    {% assign section_label = section_parts[1] %}
+    {% assign section_entries = sorted_entries | where: "section_slug", section_slug %}
+    <div class="recent-group" id="{{ section_slug }}">
+      <h3 class="archive-group-title">{{ section_label }}</h3>
+      {% for entry in section_entries %}
+        {% assign entry_epoch = entry.date | date: "%s" | plus: 0 %}
+        {% if entry_epoch >= recurring_cutoff_epoch %}
+          {% include entry-card.html entry=entry %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+  {% assign research_section_defs = "research-summary|Research Summary,deep-research|Deep Research" | split: "," %}
+  {% for section_def in research_section_defs %}
+    {% assign section_parts = section_def | split: "|" %}
+    {% assign section_slug = section_parts[0] %}
+    {% assign section_label = section_parts[1] %}
+    {% assign section_entries = sorted_entries | where: "section_slug", section_slug %}
+    <div class="recent-group" id="{{ section_slug }}">
+      <h3 class="archive-group-title">{{ section_label }}</h3>
+      {% for entry in section_entries limit: 15 %}
+        {% include entry-card.html entry=entry %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+  <div class="archive-cta">
+    <a href="{{ '/archive/' | relative_url }}">Browse the complete archive <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="manifesto-band">
+  <p class="eyebrow">The idea</p>
+  <blockquote>Keep the useful signal. Keep the source nearby. Let the rest be quiet.</blockquote>
+</section>
